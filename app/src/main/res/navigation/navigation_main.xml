@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/itemHome">
+
+    <fragment
+        android:id="@+id/itemAccount"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/actionFavoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/actionEditProfile"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.KostListFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_kost_list" >
+        <action
+            android:id="@+id/actionKostDetail"
+            app:destination="@id/kostDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kostDetailFragment"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.KostDetailFragment"
+        android:label="Detail Kost"
+        tools:layout="@layout/fragment_kost_detail" >
+        <argument
+            android:name="kostId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/actionUlasanFragment"
+            app:destination="@id/ulasanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemBooking"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.BookingFragment"
+        android:label="Booking"
+        tools:layout="@layout/fragment_booking" >
+        <action
+            android:id="@+id/actionBookingDetailFragment"
+            app:destination="@id/bookingDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingDetailFragment"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.BookingDetailFragment"
+        android:label="Booking Detail"
+        tools:layout="@layout/fragment_booking_detail">
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/actionFromBookingToKostDetail"
+            app:destination="@id/kostDetailFragment" />
+        <action
+            android:id="@+id/actionBeriUlasanFragment"
+            app:destination="@id/beriUlasanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ulasanFragment"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.UlasanFragment"
+        android:label="Ulasan"
+        tools:layout="@layout/fragment_ulasan">
+        <argument
+            android:name="kostId"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/beriUlasanFragment"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.BeriUlasanFragment"
+        android:label="Beri Ulasan"
+        tools:layout="@layout/fragment_beri_ulasan" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/actionFromFavoriteToDetailFragment"
+            app:destination="@id/kostDetailFragment" />
+        <argument
+            android:name="username"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <argument android:name="username"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>
