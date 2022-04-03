@@ -13,7 +13,6 @@ import com.ubaya.anmp_projectuts_160419077.util.loadImage
 import com.ubaya.anmp_projectuts_160419077.viewmodel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.android.synthetic.main.fragment_booking_detail.*
-import kotlinx.android.synthetic.main.fragment_login.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
