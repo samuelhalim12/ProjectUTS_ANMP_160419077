@@ -42,8 +42,8 @@ class BookingListViewModel(application: Application
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
-                    db.kostdao().deleteAllBooking()
-                    db.kostdao().insertAllBooking(result)
+//                    db.kostdao().deleteAllBooking()
+//                    db.kostdao().insertAllBooking(result)
                     kostLiveData.value = db.kostdao().selectAllBooking()
                 }
 

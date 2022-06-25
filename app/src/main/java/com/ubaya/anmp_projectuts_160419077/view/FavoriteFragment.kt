@@ -23,26 +23,26 @@ class FavoriteFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        var username : String? = "test"
-//        arguments?.let {
-//            username = FavoriteFragmentArgs.fromBundle(requireArguments()).username
-//        }
-//        viewModel = ViewModelProvider(this).get(FavoriteListViewModel::class.java)
-//        viewModel.refresh(username)
-//
-//        recViewFavorite.layoutManager = LinearLayoutManager(context)
-//        recViewFavorite.adapter = kostListAdapter
-//
-//        observeViewModel()
-//
-//        refreshLayout.setOnRefreshListener {
-//            recViewFavorite.visibility = View.GONE
-//            textErrorFavorite.visibility = View.GONE
-//            progressLoadFavoriteList.visibility = View.VISIBLE
-//            viewModel.refresh(username)
-//            refreshLayout.isRefreshing = false
-//        }
+        super.onViewCreated(view, savedInstanceState)
+        var username : String = "test"
+        arguments?.let {
+            username = FavoriteFragmentArgs.fromBundle(requireArguments()).username!!
+        }
+        viewModel = ViewModelProvider(this).get(FavoriteListViewModel::class.java)
+        viewModel.refresh(username)
+
+        recViewFavorite.layoutManager = LinearLayoutManager(context)
+        recViewFavorite.adapter = kostListAdapter
+
+        observeViewModel()
+
+        refreshLayout.setOnRefreshListener {
+            recViewFavorite.visibility = View.GONE
+            textErrorFavorite.visibility = View.GONE
+            progressLoadFavoriteList.visibility = View.VISIBLE
+            viewModel.refresh(username)
+            refreshLayout.isRefreshing = false
+        }
     }
     private fun observeViewModel() {
         viewModel.kostLiveData.observe(viewLifecycleOwner) {

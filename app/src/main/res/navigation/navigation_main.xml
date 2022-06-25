@@ -98,11 +98,9 @@
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" >
         <argument android:name="username"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
         <argument
             android:name="password"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
     </fragment>
 </navigation>

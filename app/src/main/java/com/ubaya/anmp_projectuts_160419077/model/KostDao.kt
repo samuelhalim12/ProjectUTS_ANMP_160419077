@@ -4,6 +4,7 @@ import androidx.room.*
 
 @Dao
 interface KostDao {
+    // Kost
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllKost(kost:List<Kost>)
 
@@ -24,6 +25,7 @@ interface KostDao {
     suspend fun updateKost(alamat:String, kamarTersedia:Int, deskripsi:String,
                        harga:Int,jenisKelamin:String,phone:String,photoURL:String,id:Int)
 
+    //Booking
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllBooking(booking:List<Booking>)
 
@@ -38,4 +40,52 @@ interface KostDao {
 
     @Query("DELETE FROM booking")
     suspend fun deleteAllBooking()
+
+    //Favorite
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertAllFavorite(favorite:List<Favorite>)
+
+    @Query("Select * From favorite")
+    suspend fun selectAllFavorite() : List<Favorite>
+
+    @Query("Select * from favorite where username = :username")
+    suspend fun selectFavorite(username:String): List<Favorite>
+
+    @Delete
+    suspend fun deleteFavorite(favorite:List<Favorite>)
+
+    @Query("DELETE FROM favorite")
+    suspend fun deleteAllFavorite()
+
+    //Ulasan
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertAllUlasan(ulasan:List<Ulasan>)
+
+    @Query("Select * From ulasan")
+    suspend fun selectAllUlasan() : List<Ulasan>
+
+    @Query("Select * from ulasan where kostId = :id")
+    suspend fun selectUlasan(id:Int):List<Ulasan>
+
+    @Delete
+    suspend fun deleteUlasan(ulasan:List<Ulasan>)
+
+    @Query("DELETE FROM ulasan")
+    suspend fun deleteAllUlasan()
+
+    //Account
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertAllAccount(account:List<Account>)
+
+    @Query("Select * From account")
+    suspend fun selectAllAccount() : List<Account>
+
+    @Query("Select * from account where username = :username and password = :password")
+    suspend fun selectAccount(username:String, password:String):Account
+
+    @Delete
+    suspend fun deleteAccount(account:List<Account>)
+
+    @Query("DELETE FROM account")
+    suspend fun deleteAllAccount()
 }

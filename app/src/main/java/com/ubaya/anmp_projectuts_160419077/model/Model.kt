@@ -68,7 +68,7 @@ data class Ulasan (
     @ColumnInfo(name="username")
     var username: String?,
     @ColumnInfo(name="kostId")
-    var idKost: Int?
+    var kostId: Int?
         ) {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0

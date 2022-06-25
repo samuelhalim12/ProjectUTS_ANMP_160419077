@@ -21,7 +21,7 @@ val DB_NAME = "kostdb"
 fun buildDB(context: Context):KostDatabase {
     val db = Room.databaseBuilder(context,
         KostDatabase::class.java, DB_NAME)
-        .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
         .build()
     return db
 }
@@ -31,8 +31,8 @@ val MIGRATION_1_2 = object: Migration(1,2) {
         database.execSQL("CREATE TABLE kost (id INTEGER PRIMARY KEY,alamat TEXT NOT NULL,kamarTersedia INTEGER NOT NULL,deskripsi TEXT NOT NULL, harga INTEGER NOT NULL, jenisKelamin TEXT NOT NULL, phone TEXT NOT NULL, photoURL TEXT NOT NULL)")
         database.execSQL("CREATE TABLE account (username TEXT PRIMARY KEY,password TEXT NOT NULL, phone TEXT NOT NULL, photoURL TEXT NOT NULL)")
         database.execSQL("CREATE TABLE booking (id INTEGER PRIMARY KEY,status_bayar INTEGER,bulan_sewa INTEGER NOT NULL, tahun_sewa INTEGER NOT NULL, metodePembayaran TEXT NOT NULL, idKost INTEGER NOT NULL)")
-        database.execSQL("CREATE TABLE ulasan (id INTEGER PRIMARY KEY,rating INTEGER,deskripsi TEXT, username TEXT NOT NULL, idKost INTEGER NOT NULL)")
-        database.execSQL("CREATE TABLE favorite (id INTEGER PRIMARY KEY, username TEXT NOT NULL,idKost INTEGER NOT NULL)")
+        database.execSQL("CREATE TABLE ulasan (id INTEGER PRIMARY KEY,rating INTEGER,deskripsi TEXT, username TEXT NOT NULL, kostId INTEGER NOT NULL)")
+        database.execSQL("CREATE TABLE favorite (id INTEGER PRIMARY KEY, username TEXT NOT NULL, idKost INTEGER NOT NULL)")
     }
 }
 val MIGRATION_2_3 = object: Migration(2,3) {
@@ -42,6 +42,12 @@ val MIGRATION_2_3 = object: Migration(2,3) {
         database.execSQL("ALTER TABLE booking ADD COLUMN photoURL TEXT NOT NULL")
     }
 }
+val MIGRATION_3_4 = object: Migration(3,4) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE ulasan RENAME COLUMN idKost TO kostId")
+    }
+}
+
 
     fun ImageView.loadImage(url:String?, progressBar: ProgressBar) {
     Picasso.get()

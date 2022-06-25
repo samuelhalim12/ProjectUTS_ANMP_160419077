@@ -26,8 +26,8 @@ class EditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var username : String? = "test"
-        var password : String? = "test"
+        var username : String = "test"
+        var password : String = "test"
         arguments?.let {
             username = EditProfileFragmentArgs.fromBundle(requireArguments()).username
             password = EditProfileFragmentArgs.fromBundle(requireArguments()).password

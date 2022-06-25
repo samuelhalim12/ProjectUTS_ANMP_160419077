@@ -41,7 +41,7 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllKost()
-                    db.kostdao().insertAllKost(result)
+//                    db.kostdao().insertAllKost(result)
                     kostLiveData.value = db.kostdao().selectAllKost()
                 }
                 loadingLiveData.value = false
