@@ -40,7 +40,7 @@ class BookingDetailFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
         buttonBeriUlasan.setOnClickListener {
-            val action = BookingDetailFragmentDirections.actionBeriUlasanFragment()
+            val action = BookingDetailFragmentDirections.actionBeriUlasanFragment(kostId!!)
             Navigation.findNavController(it).navigate(action)
         }
     }

@@ -15,6 +15,7 @@ import com.ubaya.anmp_projectuts_160419077.model.Booking
 import com.ubaya.anmp_projectuts_160419077.model.Kost
 import com.ubaya.anmp_projectuts_160419077.model.KostDatabase
 import com.ubaya.anmp_projectuts_160419077.model.Ulasan
+import com.ubaya.anmp_projectuts_160419077.util.buildDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -61,6 +62,12 @@ class UlasanListViewModel(application: Application): AndroidViewModel(applicatio
             tag = "TAG"
         }
         queue?.add(stringRequest)
+    }
+    fun addUlasan(ulasan:Ulasan) {
+        launch {
+            val db = buildDB(getApplication())
+            db.kostdao().insertUlasan(ulasan)
+        }
     }
     override fun onCleared() {
         super.onCleared()

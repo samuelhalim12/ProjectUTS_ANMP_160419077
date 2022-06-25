@@ -8,6 +8,9 @@ interface KostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllKost(kost:List<Kost>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertKost(kost:Kost)
+
     @Query("Select * From kost")
     suspend fun selectAllKost() : List<Kost>
 
@@ -29,6 +32,9 @@ interface KostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllBooking(booking:List<Booking>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertBooking(booking:Booking)
+
     @Query("Select * From booking")
     suspend fun selectAllBooking() : List<Booking>
 
@@ -44,6 +50,9 @@ interface KostDao {
     //Favorite
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllFavorite(favorite:List<Favorite>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertFavorite(favorite:Favorite)
 
     @Query("Select * From favorite")
     suspend fun selectAllFavorite() : List<Favorite>
@@ -61,6 +70,9 @@ interface KostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllUlasan(ulasan:List<Ulasan>)
 
+    @Insert
+    suspend fun insertUlasan(ulasan:Ulasan)
+
     @Query("Select * From ulasan")
     suspend fun selectAllUlasan() : List<Ulasan>
 
@@ -77,6 +89,9 @@ interface KostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE )
     suspend fun insertAllAccount(account:List<Account>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertAccount(account:Account)
+
     @Query("Select * From account")
     suspend fun selectAllAccount() : List<Account>
 
@@ -88,4 +103,7 @@ interface KostDao {
 
     @Query("DELETE FROM account")
     suspend fun deleteAllAccount()
+
+    @Query("UPDATE account SET password=:password, phone=:phone, photoURL=:photoURL WHERE username = :username")
+    suspend fun updateAccount(password:String,phone:String,photoURL:String,username:String)
 }

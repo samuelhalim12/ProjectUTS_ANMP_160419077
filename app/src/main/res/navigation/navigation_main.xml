@@ -78,7 +78,15 @@
         android:id="@+id/beriUlasanFragment"
         android:name="com.ubaya.anmp_projectuts_160419077.view.BeriUlasanFragment"
         android:label="Beri Ulasan"
-        tools:layout="@layout/fragment_beri_ulasan" />
+        tools:layout="@layout/fragment_beri_ulasan" >
+        <action
+            android:id="@+id/actionBeriUlasanToUlasanFragment"
+            app:destination="@id/ulasanFragment" />
+        <argument
+            android:name="idKost"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.ubaya.anmp_projectuts_160419077.view.FavoriteFragment"
@@ -102,5 +110,8 @@
         <argument
             android:name="password"
             app:argType="string" />
+        <action
+            android:id="@+id/actionEditProfileToItemAccount"
+            app:destination="@id/itemAccount" />
     </fragment>
 </navigation>
