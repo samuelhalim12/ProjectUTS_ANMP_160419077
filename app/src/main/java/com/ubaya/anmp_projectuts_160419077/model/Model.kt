@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-@Entity
+@Entity(tableName = "kost")
 data class Kost (
     @ColumnInfo(name="alamat")
     var alamat: String?,
@@ -24,7 +24,7 @@ data class Kost (
     @PrimaryKey(autoGenerate = true)
     val id:Int = 0
 }
-
+@Entity(tableName = "account")
 data class Account (
     @ColumnInfo(name="username")
     var username:String?,
@@ -38,7 +38,10 @@ data class Account (
     @PrimaryKey(autoGenerate = true)
     val id:Int = 0
 }
-
+@Entity(tableName = "booking", foreignKeys = arrayOf(ForeignKey(entity = Kost::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("idKost"),
+    onDelete = ForeignKey.CASCADE)))
 data class Booking (
 //    @ColumnInfo(name="alamat")
 //    var alamat: String?,
@@ -55,11 +58,12 @@ data class Booking (
 //    @ColumnInfo(name="photoURL")
 //    var photoURL: String?,
     @ColumnInfo(name="idKost")
-    var idKost: String?
+    var idKost: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     val id:Int = 0
 }
+@Entity(tableName = "ulasan")
 data class Ulasan (
     @ColumnInfo(name="rating")
     var rating: Int?,
@@ -68,17 +72,17 @@ data class Ulasan (
     @ColumnInfo(name="username")
     var username: String?,
     @ColumnInfo(name="kostId")
-    var kostId: String?
+    var idKost: Int?
         ) {
     @PrimaryKey(autoGenerate = true)
     val id:Int = 0
 }
-
+@Entity(tableName = "favorite")
 data class Favorite (
-    @PrimaryKey()
-    val username:String?,
-    @PrimaryKey()
-    val idKost:String?,
+    @PrimaryKey
+    val idAccount:Int,
+    @PrimaryKey
+    val idKost:Int,
 //    var alamat: String?,
 //    var kamarTersedia: Int?,
 //    var deskripsi: String?,
