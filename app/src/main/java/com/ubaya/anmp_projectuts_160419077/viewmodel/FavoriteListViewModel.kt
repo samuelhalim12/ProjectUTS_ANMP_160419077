@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken
 import com.ubaya.anmp_projectuts_160419077.model.Favorite
 
 class FavoriteListViewModel(application: Application): AndroidViewModel(application) {
-    val kostLiveData = MutableLiveData<ArrayList<Favorite>>()
+    val kostLiveData = MutableLiveData<List<Favorite>>()
     val kostLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
@@ -26,8 +26,8 @@ class FavoriteListViewModel(application: Application): AndroidViewModel(applicat
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-                val sType = object : TypeToken<ArrayList<Favorite>>(){}.type
-                val result = Gson().fromJson<ArrayList<Favorite>>(it,sType)
+                val sType = object : TypeToken<List<Favorite>>(){}.type
+                val result = Gson().fromJson<List<Favorite>>(it,sType)
                 kostLiveData.value = result
                 loadingLiveData.value = false
                 Log.d("showvolley",it)

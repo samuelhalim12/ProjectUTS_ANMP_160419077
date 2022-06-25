@@ -3,8 +3,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.ubaya.anmp_projectuts_160419077.util.MIGRATION_1_2
+import com.ubaya.anmp_projectuts_160419077.util.MIGRATION_2_3
 
-@Database(entities = [Kost::class, Account::class, Booking::class, Ulasan::class, Favorite::class], version = 1)
+@Database(entities = arrayOf(Kost::class, Account::class, Booking::class, Ulasan::class, Favorite::class), version = 2)
 abstract class KostDatabase:RoomDatabase() {
     abstract fun kostdao():KostDao
     companion object {
@@ -16,7 +18,7 @@ abstract class KostDatabase:RoomDatabase() {
                 context.applicationContext,
                 KostDatabase::class.java,
                 "kostdb")
-                .addMigrations(MIGRATION_1_2)
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                 .build()
         operator fun invoke(context:Context) {
             if(instance!=null) {

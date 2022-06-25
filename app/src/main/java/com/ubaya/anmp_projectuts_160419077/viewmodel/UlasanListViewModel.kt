@@ -15,13 +15,14 @@ import com.ubaya.anmp_projectuts_160419077.model.Kost
 import com.ubaya.anmp_projectuts_160419077.model.Ulasan
 
 class UlasanListViewModel(application: Application): AndroidViewModel(application) {
-    val kostLiveData = MutableLiveData<ArrayList<Ulasan>>()
+    val kostLiveData = MutableLiveData<List<Ulasan>>()
     val kostLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
     private var queue: RequestQueue? = null
 
-    fun refresh(kostId: String?) {
+    
+    fun refresh(kostId: Int) {
         kostLoadErrorLiveData.value = false
         loadingLiveData.value = true
         queue = Volley.newRequestQueue(getApplication())
@@ -29,8 +30,8 @@ class UlasanListViewModel(application: Application): AndroidViewModel(applicatio
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-                val sType = object : TypeToken<ArrayList<Ulasan>>(){}.type
-                val result = Gson().fromJson<ArrayList<Ulasan>>(it,sType)
+                val sType = object : TypeToken<List<Ulasan>>(){}.type
+                val result = Gson().fromJson<List<Ulasan>>(it,sType)
                 kostLiveData.value = result
                 loadingLiveData.value = false
                 Log.d("showvolley",it)

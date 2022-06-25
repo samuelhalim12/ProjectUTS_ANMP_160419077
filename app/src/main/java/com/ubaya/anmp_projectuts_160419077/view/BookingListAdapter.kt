@@ -47,7 +47,7 @@ class BookingListAdapter (val bookingList: ArrayList<Booking>) : RecyclerView
 
     override fun getItemCount() = bookingList.size
 
-    fun updateKostList(newKostList: ArrayList<Booking>) {
+    fun updateKostList(newKostList: List<Booking>) {
         bookingList.clear()
         bookingList.addAll(newKostList)
         notifyDataSetChanged()

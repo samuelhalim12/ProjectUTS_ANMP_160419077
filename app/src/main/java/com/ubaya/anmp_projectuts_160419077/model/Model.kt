@@ -22,12 +22,12 @@ data class Kost (
     var photoURL: String?
         ) {
     @PrimaryKey(autoGenerate = true)
-    val id:Int = 0
+    var id:Int = 0
 }
 @Entity(tableName = "account")
 data class Account (
-    @ColumnInfo(name="username")
-    var username:String?,
+    @PrimaryKey
+    var username: String,
     @ColumnInfo(name="password")
     var password: String?,
     @ColumnInfo(name="phone")
@@ -35,18 +35,14 @@ data class Account (
     @ColumnInfo(name="photoURL")
     var photoURL: String?
 ) {
-    @PrimaryKey(autoGenerate = true)
-    val id:Int = 0
+
 }
-@Entity(tableName = "booking", foreignKeys = arrayOf(ForeignKey(entity = Kost::class,
-    parentColumns = arrayOf("id"),
-    childColumns = arrayOf("idKost"),
-    onDelete = ForeignKey.CASCADE)))
+@Entity(tableName = "booking")
 data class Booking (
-//    @ColumnInfo(name="alamat")
-//    var alamat: String?,
-//    @ColumnInfo(name="harga")
-//    var harga: Int?,
+    @ColumnInfo(name="alamat")
+    var alamat: String?,
+    @ColumnInfo(name="harga")
+    var harga: Int?,
     @ColumnInfo(name="status_bayar")
     var status_bayar: Int?,
     @ColumnInfo(name="bulan_sewa")
@@ -55,13 +51,13 @@ data class Booking (
     var tahun_sewa: Int?,
     @ColumnInfo(name="metodePembayaran")
     var metodePembayaran: String?,
-//    @ColumnInfo(name="photoURL")
-//    var photoURL: String?,
+    @ColumnInfo(name="photoURL")
+    var photoURL: String?,
     @ColumnInfo(name="idKost")
-    var idKost: Int
+    var idKost: Int?
 ) {
     @PrimaryKey(autoGenerate = true)
-    val id:Int = 0
+    var id:Int = 0
 }
 @Entity(tableName = "ulasan")
 data class Ulasan (
@@ -75,14 +71,14 @@ data class Ulasan (
     var idKost: Int?
         ) {
     @PrimaryKey(autoGenerate = true)
-    val id:Int = 0
+    var id:Int = 0
 }
 @Entity(tableName = "favorite")
 data class Favorite (
-    @PrimaryKey
-    val idAccount:Int,
-    @PrimaryKey
-    val idKost:Int,
+    @ColumnInfo(name="username")
+    var username:String?,
+    @ColumnInfo(name="idKost")
+    var idKost:Int?,
 //    var alamat: String?,
 //    var kamarTersedia: Int?,
 //    var deskripsi: String?,
@@ -90,4 +86,7 @@ data class Favorite (
 //    var jenisKelamin: String?,
 //    var phone: String?,
 //    var photoURL: String?
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id:Int = 0
+}

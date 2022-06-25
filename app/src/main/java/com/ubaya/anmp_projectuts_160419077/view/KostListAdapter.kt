@@ -25,6 +25,7 @@ class KostListAdapter (val kostList: ArrayList<Kost>) : RecyclerView
     override fun onBindViewHolder(holder: KostViewHolder, position: Int) {
         val kost = kostList[position]
         val kostId = kost.id
+
         with (holder.view) {
             textAlamat.text = kost.alamat
             textJenisKelamin.text = kost.jenisKelamin
@@ -42,7 +43,7 @@ class KostListAdapter (val kostList: ArrayList<Kost>) : RecyclerView
 
     override fun getItemCount() = kostList.size
 
-    fun updateKostList(newKostList: ArrayList<Kost>) {
+    fun updateKostList(newKostList: List<Kost>) {
         kostList.clear()
         kostList.addAll(newKostList)
         notifyDataSetChanged()

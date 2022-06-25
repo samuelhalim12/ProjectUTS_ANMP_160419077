@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
@@ -11,12 +12,19 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.anmp_projectuts_160419077.model.Kost
+import com.ubaya.anmp_projectuts_160419077.model.KostDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class KostListViewModel(application: Application): AndroidViewModel(application) {
-    val kostLiveData = MutableLiveData<ArrayList<Kost>>()
+class KostListViewModel(application: Application): AndroidViewModel(application),CoroutineScope {
+    val kostLiveData = MutableLiveData<List<Kost>>()
     val kostLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
+    private var job = Job()
     private var queue: RequestQueue? = null
     fun refresh() {
         kostLoadErrorLiveData.value = false
@@ -26,9 +34,16 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-                val sType = object : TypeToken<ArrayList<Kost>>(){}.type
-                val result = Gson().fromJson<ArrayList<Kost>>(it,sType)
-                kostLiveData.value = result
+                val sType = object : TypeToken<List<Kost>>(){}.type
+                val result = Gson().fromJson<List<Kost>>(it,sType)
+                launch {
+                    val db = Room.databaseBuilder(getApplication(),
+                        KostDatabase::class.java, "kostdb").build()
+//                    db.kostdao().deleteBooking(result)
+//                    db.kostdao().deleteAllKost()
+                    db.kostdao().insertAllKost(result)
+                    kostLiveData.value = db.kostdao().selectAllKost()
+                }
                 loadingLiveData.value = false
                 Log.d("showvolley",it)
             },
@@ -46,4 +61,6 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
         super.onCleared()
         queue?.cancelAll(TAG)
     }
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 }

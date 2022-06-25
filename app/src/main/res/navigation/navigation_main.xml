@@ -33,8 +33,8 @@
         tools:layout="@layout/fragment_kost_detail" >
         <argument
             android:name="kostId"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="integer"
+            android:defaultValue="0" />
         <action
             android:id="@+id/actionUlasanFragment"
             app:destination="@id/ulasanFragment" />
@@ -55,8 +55,8 @@
         tools:layout="@layout/fragment_booking_detail">
         <argument
             android:name="id"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="integer"
+            android:defaultValue="0" />
         <action
             android:id="@+id/actionFromBookingToKostDetail"
             app:destination="@id/kostDetailFragment" />
@@ -71,8 +71,8 @@
         tools:layout="@layout/fragment_ulasan">
         <argument
             android:name="kostId"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/beriUlasanFragment"

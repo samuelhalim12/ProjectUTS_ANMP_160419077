@@ -25,26 +25,26 @@ class FavoriteListAdapter (val kostList: ArrayList<Favorite>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
-        val kost = kostList[position]
-        val kostId = kost.idKost
-        with(holder.view) {
-            textAlamatFavorite.text = kost.alamat
-            textJenisKelaminFavorite.text = kost.jenisKelamin
-            val formatter: NumberFormat = DecimalFormat("#,###")
-            val myNumber = kost.harga
-            val formattedNumber: String = formatter.format(myNumber)
-            textHargaFavorite.setText(formattedNumber.toString())
-            buttonDetailFavorite.setOnClickListener {
-                val action = FavoriteFragmentDirections.actionFromFavoriteToDetailFragment(kost.idKost)
-                Navigation.findNavController(it).navigate(action)
-            }
-            imageFavoriteKost.loadImage(kost.photoURL, progressPhotoFavorite)
-        }
+//        val kost = kostList[position]
+//        val kostId = kost.idKost
+//        with(holder.view) {
+//            textAlamatFavorite.text = kost.alamat
+//            textJenisKelaminFavorite.text = kost.jenisKelamin
+//            val formatter: NumberFormat = DecimalFormat("#,###")
+//            val myNumber = kost.harga
+//            val formattedNumber: String = formatter.format(myNumber)
+//            textHargaFavorite.setText(formattedNumber.toString())
+//            buttonDetailFavorite.setOnClickListener {
+//                val action = FavoriteFragmentDirections.actionFromFavoriteToDetailFragment(kost.idKost)
+//                Navigation.findNavController(it).navigate(action)
+//            }
+//            imageFavoriteKost.loadImage(kost.photoURL, progressPhotoFavorite)
+//        }
     }
 
     override fun getItemCount() = kostList.size
 
-    fun updateKostList(newKostList: ArrayList<Favorite>) {
+    fun updateKostList(newKostList: List<Favorite>) {
         kostList.clear()
         kostList.addAll(newKostList)
         notifyDataSetChanged()

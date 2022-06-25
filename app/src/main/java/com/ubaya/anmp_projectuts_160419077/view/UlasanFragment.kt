@@ -27,7 +27,7 @@ class UlasanFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var kostId : String? = "test"
+        var kostId : Int = 0
         arguments?.let {
             kostId = UlasanFragmentArgs.fromBundle(requireArguments()).kostId
         }

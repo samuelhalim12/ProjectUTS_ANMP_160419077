@@ -22,7 +22,7 @@ class KostDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_kost_detail, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var kostId : String? = "test"
+        var kostId : Int = 0
         arguments?.let {
             kostId = KostDetailFragmentArgs.fromBundle(requireArguments()).kostId
         }
