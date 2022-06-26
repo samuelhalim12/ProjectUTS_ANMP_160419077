@@ -16,5 +16,13 @@ interface ButtonSewaClickListener {
     fun onButtonSewaClickListener(v:View)
 }
 interface RadioStatusBayarListener {
-    fun onRadioStatusBayarListener(v: View, status_bayar:Int, obj:Booking)
+    fun onRadioStatusBayarListener(v: View, status_bayar:Int, obj:Booking?)
+}
+
+interface ButtonDetailListener {
+    fun onButtonDetailListener(v: View)
+}
+
+interface ButtonAddFavoriteListener {
+    fun onButtonAddFavoriteListener(v: View)
 }

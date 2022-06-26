@@ -28,7 +28,7 @@ class BookingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(BookingListViewModel::class.java)
-        viewModel.refresh()
+        viewModel.fetch()
 
         recViewBooking.layoutManager = LinearLayoutManager(context)
         recViewBooking.adapter = kostListAdapter

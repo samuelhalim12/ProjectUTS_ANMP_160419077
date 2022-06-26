@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="listener"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonDetailListener" />
+        <variable
+            name="kost"
+            type="com.ubaya.anmp_projectuts_160419077.model.Kost" />
+        <variable
+            name="listenerButtonAddFavorite"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonAddFavoriteListener" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -25,6 +37,8 @@
                 android:id="@+id/imageListKost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:imageUrl="@{kost.photoURL}"
+                android:progressBar="@{progressLoadingListKostPhoto}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -35,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Alamat"
+                android:text="@={kost.alamat}"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageListKost"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="1500000"
+                android:text="@={``+kost.harga}"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4" />
@@ -66,6 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:tag="@{kost.id}"
+                android:onClick="@{listener::onButtonDetailListener}"
                 android:text="Detail"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -84,7 +100,7 @@
                 android:id="@+id/textJenisKelamin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Putra"
+                android:text="@={kost.jenisKelamin}"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintStart_toEndOf="@+id/textView5" />
@@ -106,7 +122,10 @@
                 app:icon="@drawable/ic_baseline_favorite_border_24"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonDetail"
                 app:layout_constraintEnd_toStartOf="@+id/buttonDetail"
+                android:tag="@{kost.id}"
+                android:onClick="@{listenerButtonAddFavorite::onButtonAddFavoriteListener}"
                 tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

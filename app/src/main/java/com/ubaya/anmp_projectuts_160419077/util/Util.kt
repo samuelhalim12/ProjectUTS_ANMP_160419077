@@ -7,6 +7,7 @@ import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -65,4 +66,27 @@ val MIGRATION_3_4 = object: Migration(3,4) {
             }
 
         })
+}
+//@BindingAdapter("loadWithPicasso")
+//fun loadWithPicasso(imageView2: ImageView, url: String? ) {
+//    Picasso.get()
+//        .load(url)
+//        .resize(400,400)
+//        .centerCrop()
+//        .error(R.drawable.ic_baseline_error_24)
+//        .into(imageView2, object: Callback {
+//            override fun onSuccess() {
+////                progressBar.visibility = View.GONE
+//            }
+//
+//            override fun onError(e: Exception?) {
+//
+//            }
+//
+//        })
+////    Picasso.get().load(imageUrl).into(imageView2)
+//}
+@BindingAdapter("android:imageUrl","android:progressBar")
+fun loadPhotoUrl(v:ImageView, url:String, pb:ProgressBar) {
+    v.loadImage(url,pb)
 }

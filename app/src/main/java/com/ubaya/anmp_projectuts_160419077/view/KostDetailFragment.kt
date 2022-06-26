@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.ubaya.anmp_projectuts_160419077.R
-import com.ubaya.anmp_projectuts_160419077.databinding.FragmentEditProfileBinding
 import com.ubaya.anmp_projectuts_160419077.databinding.FragmentKostDetailBinding
 import com.ubaya.anmp_projectuts_160419077.model.Booking
 import com.ubaya.anmp_projectuts_160419077.util.loadImage
@@ -43,7 +42,8 @@ class KostDetailFragment : Fragment(),ButtonUlasanClickListener,ButtonSewaClickL
         dataBinding.radioStatusBayarListener = this
         dataBinding.belumlunas = 0
         dataBinding.lunas = 1
-
+        dataBinding.booking = Booking("",0,0,0,
+            0,"","",0)
         observeViewModel()
 //        buttonUlasan.setOnClickListener {
 //            val action = KostDetailFragmentDirections.actionUlasanFragment(kostId)
@@ -64,10 +64,7 @@ class KostDetailFragment : Fragment(),ButtonUlasanClickListener,ButtonSewaClickL
             dataBinding.detailKost = viewModel.kostLiveData.value
             imageKostDetail.loadImage(dataBinding.detailKost!!.photoURL, progressBarKostDetail)
         }
-        viewModel2.kostLiveData.observe(viewLifecycleOwner) {
-            dataBinding.booking = Booking(dataBinding.detailKost!!.alamat,0,0,0,
-                0,"",dataBinding.detailKost!!.photoURL,dataBinding.detailKost!!.id)
-        }
+
     }
 
     override fun onButtonUlasanClickListener(v: View) {
@@ -76,12 +73,17 @@ class KostDetailFragment : Fragment(),ButtonUlasanClickListener,ButtonSewaClickL
     }
 
     override fun onButtonSewaClickListener(v: View) {
+        dataBinding.booking!!.alamat = dataBinding.detailKost!!.alamat
+        dataBinding.booking!!.idKost = dataBinding.detailKost!!.id
+        dataBinding.booking!!.photoURL = dataBinding.detailKost!!.photoURL
+        dataBinding.booking!!.harga = dataBinding.detailKost!!.harga
+
         viewModel2.insertBooking(dataBinding.booking!!)
         val action = KostDetailFragmentDirections.actionKostDetailToItemBooking()
         Navigation.findNavController(v).navigate(action)
     }
 
-    override fun onRadioStatusBayarListener(v: View, status_bayar: Int, obj: Booking) {
-        obj.status_bayar = v.tag as Int
+    override fun onRadioStatusBayarListener(v: View, status_bayar: Int, obj: Booking?) {
+        obj!!.status_bayar = Integer.parseInt(v.tag.toString())
     }
 }

@@ -268,8 +268,8 @@
                         android:layout_height="wrap_content"
                         android:text="Belum Lunas"
                         android:tag="0"
-                        android:checked= "@{booking.status_bayar==0?true:false}"
-                        android:onClick="@{(view) -> radioStatusBayarListener.onRadioStatusBayarListener(view, 0, booking)}"/>
+                        android:checked= "@{booking.status_bayar==belumlunas?true:false}"
+                        android:onClick="@{(view) -> radioStatusBayarListener.onRadioStatusBayarListener(view, belumlunas, booking)}"/>
 
                     <RadioButton
                         android:id="@+id/radioLunas"
@@ -277,8 +277,8 @@
                         android:layout_height="wrap_content"
                         android:text="Lunas"
                         android:tag="1"
-                        android:checked= "@{booking.status_bayar==1?true:false}"
-                        android:onClick="@{(view) -> radioStatusBayarListener.onRadioStatusBayarListener(view, 1, booking)}"/>
+                        android:checked= "@{booking.status_bayar==lunas?true:false}"
+                        android:onClick="@{(view) -> radioStatusBayarListener.onRadioStatusBayarListener(view, lunas, booking)}"/>
                 </RadioGroup>
 
                 <TextView

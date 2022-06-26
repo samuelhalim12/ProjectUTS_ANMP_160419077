@@ -42,6 +42,38 @@ class BookingListViewModel(application: Application
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
+                    db.kostdao().deleteAllBooking()
+                    db.kostdao().insertAllBooking(result)
+                    kostLiveData.value = db.kostdao().selectAllBooking()
+                }
+
+                loadingLiveData.value = false
+                Log.d("showvolley",it)
+            },
+            {
+                loadingLiveData.value = false
+                kostLoadErrorLiveData.value = true
+                Log.d("errorvolley",it.toString())
+            }
+        ).apply {
+            tag = "TAG"
+        }
+        queue?.add(stringRequest)
+    }
+    fun fetch() {
+        kostLoadErrorLiveData.value = false
+        loadingLiveData.value = true
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "http://192.168.100.3/anmp/projectUTS/booking.php"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                val sType = object : TypeToken<List<Booking>>(){}.type
+                val result = Gson().fromJson<List<Booking>>(it,sType)
+                launch {
+                    val db = Room.databaseBuilder(getApplication(),
+                        KostDatabase::class.java, "kostdb").build()
+//                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllBooking()
 //                    db.kostdao().insertAllBooking(result)
                     kostLiveData.value = db.kostdao().selectAllBooking()
