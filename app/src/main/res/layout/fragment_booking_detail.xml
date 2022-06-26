@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="listenerDetailKost"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonDetailKostDetailBookingListener" />
+        <variable
+            name="listenerBeriUlasan"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonBeriUlasanListener" />
+        <variable
+            name="booking"
+            type="com.ubaya.anmp_projectuts_160419077.model.Booking" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -88,7 +100,7 @@
         android:id="@+id/textAlamatDetailBooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@={booking.alamat}"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/textView" />
@@ -97,7 +109,7 @@
         android:id="@+id/textHargaDetailBooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@={``+booking.harga}"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView6" />
@@ -106,7 +118,7 @@
         android:id="@+id/textStatusBayarDetailBooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@{booking.status_bayar==1?`Lunas`:`Belum Lunas`}"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/textView8" />
@@ -115,7 +127,7 @@
         android:id="@+id/textMetodePembayaranDetailBooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@={booking.metodePembayaran}"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/textView10" />
@@ -125,6 +137,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detail Kost"
+        android:tag="@{booking.idKost}"
+        android:onClick="@{listenerDetailKost::onButtonDetailKostDetailBookingListener}"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -133,6 +147,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:tag="@{booking.idKost}"
+        android:onClick="@{listenerBeriUlasan::onButtonBeriUlasanListener}"
         android:text="Beri Ulasan"
         app:layout_constraintBottom_toBottomOf="@+id/buttonDetailKostDetailBooking"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -147,3 +163,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageDetailBooking" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

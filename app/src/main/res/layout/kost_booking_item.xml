@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="listener"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonDetailBookingListener" />
+        <variable
+            name="booking"
+            type="com.ubaya.anmp_projectuts_160419077.model.Booking" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,6 +34,8 @@
                 android:id="@+id/imageBookingKost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:imageUrl="@{booking.photoURL}"
+                android:progressBar="@{progressImageBookingList}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -91,9 +102,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:tag="@{booking.id}"
+                android:onClick="@{listener::onButtonDetailBookingListener}"
                 android:text="Detail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textStatusBayar" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

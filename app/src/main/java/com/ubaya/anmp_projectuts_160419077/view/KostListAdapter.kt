@@ -58,7 +58,8 @@ class KostListAdapter (val kostList: ArrayList<Kost>) : RecyclerView
     }
 
     override fun onButtonDetailListener(v: View) {
-        TODO("Not yet implemented")
+        val action = KostListFragmentDirections.actionKostDetail(v.tag.toString().toInt())
+                Navigation.findNavController(v).navigate(action)
     }
 
     override fun onButtonAddFavoriteListener(v: View) {

@@ -21,6 +21,9 @@
         <variable
             name="belumlunas"
             type="Integer" />
+        <variable
+            name="imageUrl"
+            type="String" />
         <variable name="radioStatusBayarListener"
             type="com.ubaya.anmp_projectuts_160419077.view.RadioStatusBayarListener" />
     </data>
@@ -46,7 +49,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    tools:src="@tools:sample/avatars"/>
+<!--                    android:imageUrl="@{detailKost.photoURL}"-->
+<!--                    android:progressBar="@{progressBarKostDetail}"-->
+
 
                 <TextView
                     android:id="@+id/textView2"

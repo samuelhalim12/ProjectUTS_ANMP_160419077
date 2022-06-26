@@ -31,12 +31,14 @@ class KostDetailFragment : Fragment(),ButtonUlasanClickListener,ButtonSewaClickL
     }
     var kostId : Int = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments?.let {
-            kostId = KostDetailFragmentArgs.fromBundle(requireArguments()).kostId
-        }
+//        arguments?.let {
+//            kostId = KostDetailFragmentArgs.fromBundle(requireArguments()).kostId
+//        }
+        kostId = KostDetailFragmentArgs.fromBundle(requireArguments()).kostId
         viewModel = ViewModelProvider(this).get(KostDetailViewModel::class.java)
         viewModel2 = ViewModelProvider(this).get(BookingDetailViewModel::class.java)
         viewModel.fetch(kostId)
+        dataBinding.detailKost = viewModel.kostLiveData.value
         dataBinding.listenerButtonSewa = this
         dataBinding.listenerButtonUlasan = this
         dataBinding.radioStatusBayarListener = this
@@ -44,6 +46,7 @@ class KostDetailFragment : Fragment(),ButtonUlasanClickListener,ButtonSewaClickL
         dataBinding.lunas = 1
         dataBinding.booking = Booking("",0,0,0,
             0,"","",0)
+
         observeViewModel()
 //        buttonUlasan.setOnClickListener {
 //            val action = KostDetailFragmentDirections.actionUlasanFragment(kostId)
@@ -61,7 +64,10 @@ class KostDetailFragment : Fragment(),ButtonUlasanClickListener,ButtonSewaClickL
 //                textJenisKelaminDetail.setText(it.jenisKelamin)
 //                textKamarTersedia.setText(it.kamarTersedia.toString())
 //            }
-            dataBinding.detailKost = viewModel.kostLiveData.value
+//            dataBinding.detailKost = viewModel.kostLiveData.value
+            dataBinding.detailKost = it
+//            dataBinding.imageUrl = it.photoURL
+
             imageKostDetail.loadImage(dataBinding.detailKost!!.photoURL, progressBarKostDetail)
         }
 

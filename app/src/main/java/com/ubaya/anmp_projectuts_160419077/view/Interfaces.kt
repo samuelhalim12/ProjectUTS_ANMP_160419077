@@ -26,3 +26,12 @@ interface ButtonDetailListener {
 interface ButtonAddFavoriteListener {
     fun onButtonAddFavoriteListener(v: View)
 }
+interface ButtonDetailBookingListener {
+    fun onButtonDetailBookingListener(v: View)
+}
+interface ButtonDetailKostDetailBookingListener {
+    fun onButtonDetailKostDetailBookingListener(v: View)
+}
+interface ButtonBeriUlasanListener {
+    fun onButtonBeriUlasanListener(v: View)
+}
