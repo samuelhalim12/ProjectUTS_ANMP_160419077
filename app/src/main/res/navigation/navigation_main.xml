@@ -38,6 +38,9 @@
         <action
             android:id="@+id/actionUlasanFragment"
             app:destination="@id/ulasanFragment" />
+        <action
+            android:id="@+id/actionKostDetailToItemBooking"
+            app:destination="@id/itemBooking" />
     </fragment>
     <fragment
         android:id="@+id/itemBooking"

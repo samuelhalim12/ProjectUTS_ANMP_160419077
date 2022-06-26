@@ -49,7 +49,12 @@ class BookingDetailViewModel(application: Application
             kostLiveData.value =  db.kostdao().selectBooking(kostId)
         }
     }
-
+    fun insertBooking(booking:Booking) {
+        launch {
+            val db = buildDB(getApplication())
+            db.kostdao().insertBooking(booking)
+        }
+    }
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
