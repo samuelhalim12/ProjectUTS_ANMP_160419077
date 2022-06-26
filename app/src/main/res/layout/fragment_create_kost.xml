@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="listenerButtonCreate"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonCreateClick" />
+        <variable
+            name="mykost"
+            type="com.ubaya.anmp_projectuts_160419077.model.Kost" />
+        <variable
+            name="radioJenisKelaminListener"
+            type="com.ubaya.anmp_projectuts_160419077.view.RadioJenisKelaminListener" />
+    </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.CreateKost">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout11"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editAlamatCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat"
+                    android:text="@={mykost.alamat}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout12"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout11"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout11"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editKamarTersediaCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kamar Tersedia"
+                    android:text="@={``+mykost.kamarTersedia}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/radioGroupJenisKelamin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout12"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
+
+                <RadioButton
+                    android:id="@+id/radioPutraCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Putra"
+                    android:checked= "@{mykost.jenisKelamin==`Putra`?true:false}"
+                    android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putra`, mykost)}"/>
+
+                <RadioButton
+                    android:id="@+id/radioPutriCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Putri"
+                    android:checked= "@{mykost.jenisKelamin==`Putri`?true:false}"
+                    android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putri`, mykost)}"/>
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout13"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout12"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupJenisKelamin"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupJenisKelamin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editDeskripsiCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Deskripsi"
+                    android:text="@={mykost.deskripsi}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout14"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout13"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout13"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editHargaCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga Per Bulan"
+                    android:text="@={``+mykost.harga}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout15"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout14"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editPhoneCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nomor Telepon"
+                    android:text="@={mykost.phone}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout16"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout15"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout15"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout15">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editPhotoURLCreateKost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Photo URL"
+                    android:text="@={mykost.photoURL}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/buttonCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="CREATE"
+                android:onClick="@{listenerButtonCreate::onButtonCreateClick}"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout16"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout16" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>
+</layout>

@@ -41,6 +41,8 @@ class AccountViewModel(application: Application):AndroidViewModel(application), 
                 val sType = object : TypeToken<List<Account>>(){}.type
                 val result = Gson().fromJson<List<Account>>(it,sType)
                 launch {
+//                    val db = Room.databaseBuilder(getApplication(),
+//                        KostDatabase::class.java, "kostdb").fallbackToDestructiveMigration().build()
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)

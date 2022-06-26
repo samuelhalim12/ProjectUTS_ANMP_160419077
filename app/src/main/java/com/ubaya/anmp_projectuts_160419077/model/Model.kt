@@ -19,7 +19,9 @@ data class Kost (
     @ColumnInfo(name="phone")
     var phone: String?,
     @ColumnInfo(name="photoURL")
-    var photoURL: String?
+    var photoURL: String?,
+    @ColumnInfo(name="username")
+    var username: String?
         ) {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0

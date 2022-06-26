@@ -38,6 +38,8 @@ class FavoriteListViewModel(application: Application): AndroidViewModel(applicat
                 val sType = object : TypeToken<List<Favorite>>(){}.type
                 val result = Gson().fromJson<List<Favorite>>(it,sType)
                 launch {
+//                    val db = Room.databaseBuilder(getApplication(),
+//                        KostDatabase::class.java, "kostdb").fallbackToDestructiveMigration().build()
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)

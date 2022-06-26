@@ -43,6 +43,8 @@ class UlasanListViewModel(application: Application): AndroidViewModel(applicatio
                 val sType = object : TypeToken<List<Ulasan>>(){}.type
                 val result = Gson().fromJson<List<Ulasan>>(it,sType)
                 launch {
+//                    val db = Room.databaseBuilder(getApplication(),
+//                        KostDatabase::class.java, "kostdb").fallbackToDestructiveMigration().build()
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)

@@ -117,4 +117,18 @@
             android:id="@+id/actionEditProfileToItemAccount"
             app:destination="@id/itemAccount" />
     </fragment>
+    <fragment
+        android:id="@+id/itemMyKost"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.MyKostFragment"
+        android:label="My Kost"
+        tools:layout="@layout/fragment_my_kost" >
+        <action
+            android:id="@+id/actionMyKostToCreateKost"
+            app:destination="@id/createKost" />
+    </fragment>
+    <fragment
+        android:id="@+id/createKost"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.CreateKost"
+        android:label="fragment_create_kost"
+        tools:layout="@layout/fragment_create_kost" />
 </navigation>

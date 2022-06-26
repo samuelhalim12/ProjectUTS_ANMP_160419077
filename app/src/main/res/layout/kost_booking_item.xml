@@ -90,7 +90,7 @@
                 android:id="@+id/textStatusBayar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lunas"
+                android:text="@{booking.status_bayar==1?`Lunas`:`Belum Lunas`}"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView12"
                 app:layout_constraintStart_toEndOf="@+id/textView12" />

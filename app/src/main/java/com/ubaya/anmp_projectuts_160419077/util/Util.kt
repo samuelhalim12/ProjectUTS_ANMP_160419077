@@ -22,7 +22,8 @@ val DB_NAME = "kostdb"
 fun buildDB(context: Context):KostDatabase {
     val db = Room.databaseBuilder(context,
         KostDatabase::class.java, DB_NAME)
-        .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+        .fallbackToDestructiveMigration()
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
         .build()
     return db
 }
@@ -41,11 +42,24 @@ val MIGRATION_2_3 = object: Migration(2,3) {
         database.execSQL("ALTER TABLE booking ADD COLUMN alamat TEXT NOT NULL")
         database.execSQL("ALTER TABLE booking ADD COLUMN harga INTEGER NOT NULL")
         database.execSQL("ALTER TABLE booking ADD COLUMN photoURL TEXT NOT NULL")
+//        database.execSQL("ALTER TABLE ulasan RENAME COLUMN idKost TO kostId")
+//        database.execSQL("ALTER TABLE kost ADD COLUMN username TEXT NOT NULL")
+
     }
 }
 val MIGRATION_3_4 = object: Migration(3,4) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL("ALTER TABLE ulasan RENAME COLUMN idKost TO kostId")
+    }
+}
+val MIGRATION_4_5 = object: Migration(4,5) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE kost ADD COLUMN username TEXT NOT NULL")
+    }
+}
+val MIGRATION_2_1 = object: Migration(2,1) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE kost ADD COLUMN username TEXT NOT NULL")
     }
 }
 

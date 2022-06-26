@@ -17,6 +17,9 @@ interface KostDao {
     @Query("Select * from kost where id = :id")
     suspend fun selectKost(id:Int):Kost
 
+    @Query("Select * from kost where username = :username")
+    suspend fun selectKostCertainUser(username:String):List<Kost>
+
     @Delete
     suspend fun deleteKost(kost:Kost)
 

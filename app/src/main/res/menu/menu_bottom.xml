@@ -13,6 +13,11 @@
         android:title="Booking"
         app:showAsAction="always" />
     <item
+        android:id="@+id/itemMyKost"
+        android:icon="@drawable/ic_baseline_apartment_24"
+        android:title="My Kost"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/itemAccount"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Account"

@@ -21,6 +21,7 @@ import kotlin.coroutines.CoroutineContext
 
 class KostListViewModel(application: Application): AndroidViewModel(application),CoroutineScope {
     val kostLiveData = MutableLiveData<List<Kost>>()
+    val myKostLiveData = MutableLiveData<List<Kost>>()
     val kostLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
@@ -37,12 +38,44 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
                 val sType = object : TypeToken<List<Kost>>(){}.type
                 val result = Gson().fromJson<List<Kost>>(it,sType)
                 launch {
+//                    val db = Room.databaseBuilder(getApplication(),
+//                        KostDatabase::class.java, "kostdb").fallbackToDestructiveMigration().build()
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllKost()
 //                    db.kostdao().insertAllKost(result)
                     kostLiveData.value = db.kostdao().selectAllKost()
+                }
+                loadingLiveData.value = false
+                Log.d("showvolley",it)
+            },
+            {
+                loadingLiveData.value = false
+                kostLoadErrorLiveData.value = true
+                Log.d("errorvolley",it.toString())
+            }
+        ).apply {
+            tag = "TAG"
+        }
+        queue?.add(stringRequest)
+    }
+    fun fetchMyKost(username: String) {
+        kostLoadErrorLiveData.value = false
+        loadingLiveData.value = true
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "http://192.168.100.3/anmp/projectUTS/kost.php"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                val sType = object : TypeToken<List<Kost>>(){}.type
+                val result = Gson().fromJson<List<Kost>>(it,sType)
+                launch {
+//                    val db = Room.databaseBuilder(getApplication(),
+//                        KostDatabase::class.java, "kostdb").fallbackToDestructiveMigration().build()
+                    val db = Room.databaseBuilder(getApplication(),
+                        KostDatabase::class.java, "kostdb").build()
+                    myKostLiveData.value = db.kostdao().selectKostCertainUser(username)
                 }
                 loadingLiveData.value = false
                 Log.d("showvolley",it)
