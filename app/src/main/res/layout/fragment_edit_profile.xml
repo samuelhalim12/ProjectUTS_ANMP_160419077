@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:password="true"
+            android:editable="false"
             android:text="@={account.password}"/>
     </com.google.android.material.textfield.TextInputLayout>
 

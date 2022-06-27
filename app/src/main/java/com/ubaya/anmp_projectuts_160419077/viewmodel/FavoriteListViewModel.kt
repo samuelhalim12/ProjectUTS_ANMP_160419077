@@ -31,7 +31,8 @@ class FavoriteListViewModel(application: Application): AndroidViewModel(applicat
         loadingLiveData.value = true
         queue = Volley.newRequestQueue(getApplication())
 //        val url = "http://192.168.100.3/anmp/projectUTS/favorite.php?username=$username"
-        val url = "http://192.168.100.3/anmp/projectUTS/favorite.php"
+//        val url = "http://192.168.100.3/anmp/projectUTS/favorite.php"
+        val url = "https://ubaya.fun/native/160419077/uas_anmp/favorite.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

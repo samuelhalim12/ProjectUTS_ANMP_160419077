@@ -10,15 +10,6 @@
             name="mykost"
             type="com.ubaya.anmp_projectuts_160419077.model.Kost" />
         <variable
-            name="jenisKelamin"
-            type="String" />
-        <variable
-            name="putra"
-            type="String" />
-        <variable
-            name="putri"
-            type="String" />
-        <variable
             name="radioJenisKelaminListener"
             type="com.ubaya.anmp_projectuts_160419077.view.RadioJenisKelaminListener" />
     </data>
@@ -96,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:text="Putra"
                     android:tag="Putra"
-                    android:checked= "@{jenisKelamin==putra?true:false}"
+                    android:checked= "@{mykost.jenisKelamin == `Putra`}"
                     android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putra`, mykost)}"
                     />
 
@@ -104,7 +95,7 @@
                     android:id="@+id/radioPutriEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="@{jenisKelamin==putri?true:false}"
+                    android:checked="@{mykost.jenisKelamin == `Putri`}"
                     android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putri`, mykost)}"
                     android:tag="Putri"
                     android:text="Putri" />

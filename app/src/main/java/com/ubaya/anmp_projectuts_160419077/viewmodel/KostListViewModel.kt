@@ -32,7 +32,8 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
         kostLoadErrorLiveData.value = false
         loadingLiveData.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://192.168.100.3/anmp/projectUTS/kost.php"
+//        val url = "http://192.168.100.3/anmp/projectUTS/kost.php"
+        val url = "https://ubaya.fun/native/160419077/uas_anmp/kost.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
@@ -65,7 +66,8 @@ class KostListViewModel(application: Application): AndroidViewModel(application)
         kostLoadErrorLiveData.value = false
         loadingLiveData.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://192.168.100.3/anmp/projectUTS/kost.php"
+//        val url = "http://192.168.100.3/anmp/projectUTS/kost.php"
+        val url = "https://ubaya.fun/native/160419077/uas_anmp/kost.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

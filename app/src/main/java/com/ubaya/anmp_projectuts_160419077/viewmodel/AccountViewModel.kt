@@ -31,7 +31,8 @@ class AccountViewModel(application: Application):AndroidViewModel(application), 
         queue = Volley.newRequestQueue(getApplication())
 
 //        val url = "http://192.168.100.3/anmp/projectUTS/account.php?username=$username&password=$password"
-        val url = "http://192.168.100.3/anmp/projectUTS/account.php"
+//        val url = "http://192.168.100.3/anmp/projectUTS/account.php"
+        val url = "https://ubaya.fun/native/160419077/uas_anmp/account.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

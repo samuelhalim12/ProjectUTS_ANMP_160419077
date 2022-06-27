@@ -39,16 +39,13 @@ class EditMyKost : Fragment(),ButtonSaveEditKostClick,RadioJenisKelaminListener 
 
 //        dataBinding.myrecipe = MyRecipes("",4,0,"")
 //        dataBinding.mykost = Kost("",0,"",0,"","","","sammy")
-
-        dataBinding.listenerButtonSave = this
-        dataBinding.radioJenisKelaminListener = this
-        dataBinding.putra = "Putra"
-        dataBinding.putri = "Putri"
         viewModel.kostLiveData.observe(viewLifecycleOwner) {
             dataBinding.mykost = it
-            dataBinding.jenisKelamin = dataBinding.mykost!!.jenisKelamin.toString()
+//            dataBinding.jenisKelamin = dataBinding.mykost!!.jenisKelamin.toString()
             imageViewEditMyKost.loadImage(dataBinding.mykost!!.photoURL, progressBarEditMyKostImage)
         }
+        dataBinding.listenerButtonSave = this
+        dataBinding.radioJenisKelaminListener = this
     }
 
     override fun onRadioJenisKelaminListener(v: View, jenisKelamin: String, obj: Kost) {

@@ -36,7 +36,8 @@ class UlasanListViewModel(application: Application): AndroidViewModel(applicatio
         loadingLiveData.value = true
         queue = Volley.newRequestQueue(getApplication())
 //        val url = "http://192.168.100.3/anmp/projectUTS/ulasan.php?id=$kostId"
-        val url = "http://192.168.100.3/anmp/projectUTS/ulasan.php"
+//        val url = "http://192.168.100.3/anmp/projectUTS/ulasan.php"
+        val url = "https://ubaya.fun/native/160419077/uas_anmp/ulasan.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

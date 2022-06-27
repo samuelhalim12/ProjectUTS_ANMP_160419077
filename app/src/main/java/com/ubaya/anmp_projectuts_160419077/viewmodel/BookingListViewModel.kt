@@ -42,8 +42,8 @@ class BookingListViewModel(application: Application
                     val db = Room.databaseBuilder(getApplication(),
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
-                    db.kostdao().deleteAllBooking()
-                    db.kostdao().insertAllBooking(result)
+//                    db.kostdao().deleteAllBooking()
+//                    db.kostdao().insertAllBooking(result)
                     kostLiveData.value = db.kostdao().selectAllBooking()
                 }
 
@@ -64,7 +64,8 @@ class BookingListViewModel(application: Application
         kostLoadErrorLiveData.value = false
         loadingLiveData.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://192.168.100.3/anmp/projectUTS/booking.php"
+//        val url = "http://192.168.100.3/anmp/projectUTS/booking.php"
+        val url = "https://ubaya.fun/native/160419077/uas_anmp/booking.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

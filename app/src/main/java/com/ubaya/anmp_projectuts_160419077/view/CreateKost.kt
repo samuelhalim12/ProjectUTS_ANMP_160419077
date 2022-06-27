@@ -46,7 +46,7 @@ class CreateKost : Fragment(),ButtonCreateClick,RadioJenisKelaminListener {
                 viewModel.addMyKost(dataBinding.mykost!!)
                 Toast.makeText(
                     context,
-                    dataBinding.mykost!!.toString(),
+                    "Your Kost Has Been Inserted",
                     Toast.LENGTH_SHORT
                 ).show()
                 val action = CreateKostDirections.actionCreateKostToMyKost()
