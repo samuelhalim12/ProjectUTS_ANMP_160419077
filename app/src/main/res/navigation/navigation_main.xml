@@ -125,10 +125,29 @@
         <action
             android:id="@+id/actionMyKostToCreateKost"
             app:destination="@id/createKost" />
+        <action
+            android:id="@+id/actionMyKostToEditMyKost"
+            app:destination="@id/editMyKost" />
     </fragment>
     <fragment
         android:id="@+id/createKost"
         android:name="com.ubaya.anmp_projectuts_160419077.view.CreateKost"
-        android:label="fragment_create_kost"
-        tools:layout="@layout/fragment_create_kost" />
+        android:label="Create Kost"
+        tools:layout="@layout/fragment_create_kost">
+        <action
+            android:id="@+id/actionCreateKostToMyKost"
+            app:destination="@id/itemMyKost" />
+    </fragment>
+    <fragment
+        android:id="@+id/editMyKost"
+        android:name="com.ubaya.anmp_projectuts_160419077.view.EditMyKost"
+        android:label="Edit My Kost">
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/actionEditMyKostToMyKost"
+            app:destination="@id/itemMyKost" />
+    </fragment>
 </navigation>

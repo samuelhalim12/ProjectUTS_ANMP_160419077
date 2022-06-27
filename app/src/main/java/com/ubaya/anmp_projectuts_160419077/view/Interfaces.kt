@@ -48,3 +48,9 @@ interface ButtonCreateClick {
 interface RadioJenisKelaminListener {
     fun onRadioJenisKelaminListener(v: View, jenisKelamin:String, obj:Kost)
 }
+//interface RadioEditJenisKelaminListener {
+//    fun onRadioEditJenisKelaminListener(v: View, jenisKelamin:String, obj:Kost)
+//}
+interface ButtonSaveEditKostClick {
+    fun onButtonSaveEditKostClick(v: View)
+}

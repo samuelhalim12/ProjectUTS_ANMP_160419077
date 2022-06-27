@@ -4,11 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="listenerButtonCreate"
-            type="com.ubaya.anmp_projectuts_160419077.view.ButtonCreateClick" />
+            name="listenerButtonSave"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonSaveEditKostClick" />
         <variable
             name="mykost"
             type="com.ubaya.anmp_projectuts_160419077.model.Kost" />
+        <variable
+            name="jenisKelamin"
+            type="String" />
+        <variable
+            name="putra"
+            type="String" />
+        <variable
+            name="putri"
+            type="String" />
         <variable
             name="radioJenisKelaminListener"
             type="com.ubaya.anmp_projectuts_160419077.view.RadioJenisKelaminListener" />
@@ -16,7 +25,7 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateKost">
+    tools:context=".view.EditMyKost">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,41 +33,49 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewEditMyKost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout11"
+                android:id="@+id/textInputLayout4"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/imageViewEditMyKost">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editAlamatCreateKost"
+                    android:id="@+id/editAlamatEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Alamat"
                     android:text="@={mykost.alamat}"/>
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout12"
+                android:id="@+id/textInputLayout17"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout11"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout11"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editKamarTersediaCreateKost"
+                    android:id="@+id/editKamarTersediaEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Kamar Tersedia"
@@ -66,45 +83,45 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
-                android:id="@+id/radioGroupJenisKelamin"
+                android:id="@+id/radioGroupJenisKelaminEditKost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout12"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout17"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
 
                 <RadioButton
-                    android:id="@+id/radioPutraCreateKost"
+                    android:id="@+id/radioPutraEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Putra"
                     android:tag="Putra"
-                    android:checked= "@{mykost.jenisKelamin==`Putra`?true:false}"
-                    android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putra`, mykost)}"/>
+                    android:checked= "@{jenisKelamin==putra?true:false}"
+                    android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putra`, mykost)}"
+                    />
 
                 <RadioButton
-                    android:id="@+id/radioPutriCreateKost"
+                    android:id="@+id/radioPutriEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Putri"
+                    android:checked="@{jenisKelamin==putri?true:false}"
+                    android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putri`, mykost)}"
                     android:tag="Putri"
-                    android:checked= "@{mykost.jenisKelamin==`Putri`?true:false}"
-                    android:onClick="@{(view) -> radioJenisKelaminListener.onRadioJenisKelaminListener(view, `Putri`, mykost)}"/>
+                    android:text="Putri" />
             </RadioGroup>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout13"
+                android:id="@+id/textInputLayout18"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout12"
-                app:layout_constraintStart_toStartOf="@+id/radioGroupJenisKelamin"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroupJenisKelamin">
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout17"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupJenisKelaminEditKost"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupJenisKelaminEditKost">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editDeskripsiCreateKost"
+                    android:id="@+id/editDeskripsiEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Deskripsi"
@@ -112,17 +129,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout14"
+                android:id="@+id/textInputLayout19"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout13"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout13"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout18"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout18"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout18">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editHargaCreateKost"
+                    android:id="@+id/editHargaEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Harga Per Bulan"
@@ -130,17 +147,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout15"
+                android:id="@+id/textInputLayout20"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout14"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout14"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout19"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout19"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout19">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editPhoneCreateKost"
+                    android:id="@+id/editPhoneEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nomor Telepon"
@@ -148,34 +165,46 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout16"
+                android:id="@+id/textInputLayout21"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout15"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout15"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout15">
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout20"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout20"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout20">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editPhotoURLCreateKost"
+                    android:id="@+id/editPhotoURLEditKost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Photo URL"
                     android:text="@={mykost.photoURL}"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/buttonCreate"
+                android:id="@+id/buttonSaveEditKost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="CREATE"
-                android:onClick="@{listenerButtonCreate::onButtonCreateClick}"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout16"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout16" />
+                android:layout_weight="1"
+                android:text="Save"
+                android:onClick="@{listenerButtonSave::onButtonSaveEditKostClick}"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout21"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout21" />
+
+            <ProgressBar
+                android:id="@+id/progressBarEditMyKostImage"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewEditMyKost"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewEditMyKost"
+                app:layout_constraintStart_toStartOf="@+id/imageViewEditMyKost"
+                app:layout_constraintTop_toTopOf="@+id/imageViewEditMyKost" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </FrameLayout>
 </layout>

@@ -47,6 +47,15 @@ class KostDetailViewModel(application: Application): AndroidViewModel(applicatio
             kostLiveData.value =  db.kostdao().selectKost(kostId)
         }
     }
+    fun editMyKost(kost:Kost){
+        launch {
+            val db = buildDB(getApplication())
+            db.kostdao().updateKost(kost.alamat.toString(),
+                kost.kamarTersedia.toString().toInt(),kost.deskripsi.toString(),
+                kost.harga.toString().toInt(),kost.jenisKelamin.toString(),
+                kost.phone.toString(),kost.photoURL.toString(),kost.id.toString().toInt())
+        }
+    }
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)

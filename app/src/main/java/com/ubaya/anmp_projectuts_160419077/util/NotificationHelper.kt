@@ -27,7 +27,7 @@ class NotificationHelper(val context: Context) {
         }
     }
 
-    fun createNotification(title:String, message:String) {
+    fun createNotificationKost(title:String, message:String) {
         createNotificationChannel()
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

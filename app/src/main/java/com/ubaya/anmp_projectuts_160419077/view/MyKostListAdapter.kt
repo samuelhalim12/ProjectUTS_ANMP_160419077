@@ -1,9 +1,11 @@
 package com.ubaya.anmp_projectuts_160419077.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ubaya.anmp_projectuts_160419077.R
 import com.ubaya.anmp_projectuts_160419077.databinding.MyKostListItemBinding
@@ -21,7 +23,7 @@ class MyKostListAdapter (val myKostList: ArrayList<Kost>):RecyclerView
             R.layout.my_kost_list_item, parent, false)
         return MyKostListAdapter.MyKostViewHolder(v)
     }
-
+    var kostId : Int = 0
     override fun onBindViewHolder(holder: MyKostViewHolder, position: Int) {
         with (holder.view) {
 //            textAlamat.text = kost.alamat
@@ -37,6 +39,7 @@ class MyKostListAdapter (val myKostList: ArrayList<Kost>):RecyclerView
 //            imageListKost.loadImage(kost.photoURL, progressLoadingListKostPhoto)
             mykost = myKostList[position]
             listenerButtonEdit = this@MyKostListAdapter
+            kostId = myKostList[position].id
         }
     }
 
@@ -49,6 +52,8 @@ class MyKostListAdapter (val myKostList: ArrayList<Kost>):RecyclerView
     }
 
     override fun onButtonEditMyKostListener(v: View) {
-        TODO("Not yet implemented")
+        Log.d("KostId",kostId.toString())
+        val action = MyKostFragmentDirections.actionMyKostToEditMyKost(kostId)
+        Navigation.findNavController(v).navigate(action)
     }
 }

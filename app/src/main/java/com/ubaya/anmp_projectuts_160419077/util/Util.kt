@@ -22,7 +22,7 @@ val DB_NAME = "kostdb"
 fun buildDB(context: Context):KostDatabase {
     val db = Room.databaseBuilder(context,
         KostDatabase::class.java, DB_NAME)
-        .fallbackToDestructiveMigration()
+//        .fallbackToDestructiveMigration()
         .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
         .build()
     return db
@@ -53,11 +53,6 @@ val MIGRATION_3_4 = object: Migration(3,4) {
     }
 }
 val MIGRATION_4_5 = object: Migration(4,5) {
-    override fun migrate(database: SupportSQLiteDatabase) {
-        database.execSQL("ALTER TABLE kost ADD COLUMN username TEXT NOT NULL")
-    }
-}
-val MIGRATION_2_1 = object: Migration(2,1) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL("ALTER TABLE kost ADD COLUMN username TEXT NOT NULL")
     }
