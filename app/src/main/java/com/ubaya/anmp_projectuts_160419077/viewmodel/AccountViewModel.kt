@@ -48,7 +48,7 @@ class AccountViewModel(application: Application):AndroidViewModel(application), 
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllAccount()
-//                    db.kostdao().insertAllAccount(result)
+                    db.kostdao().insertAllAccount(result)
                     accountsLiveData.value = db.kostdao().selectAccount(username,password)
                 }
                 Log.d("showvolley",it)

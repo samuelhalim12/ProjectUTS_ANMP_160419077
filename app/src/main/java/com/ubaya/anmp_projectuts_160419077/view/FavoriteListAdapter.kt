@@ -3,10 +3,13 @@ package com.ubaya.anmp_projectuts_160419077.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ubaya.anmp_projectuts_160419077.R
+import com.ubaya.anmp_projectuts_160419077.databinding.FavoriteListItemBinding
+import com.ubaya.anmp_projectuts_160419077.databinding.KostListItemBinding
 import com.ubaya.anmp_projectuts_160419077.model.Favorite
 import com.ubaya.anmp_projectuts_160419077.model.Kost
 import com.ubaya.anmp_projectuts_160419077.util.loadImage
@@ -19,39 +22,24 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 
 class FavoriteListAdapter (val kostList: ArrayList<Favorite>) : RecyclerView
-.Adapter<FavoriteListAdapter.FavoriteViewHolder>() {
-    class FavoriteViewHolder(var view: View) : RecyclerView.ViewHolder(view)
+.Adapter<FavoriteListAdapter.FavoriteViewHolder>(), ButtonDetailFavoriteListener, ButtonFavoriteListener {
+    class FavoriteViewHolder(var view: FavoriteListItemBinding) : RecyclerView.ViewHolder(view.root)
 //    private lateinit var  viewModel: KostDetailViewModel
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.favorite_list_item, parent, false)
-        return FavoriteViewHolder(view)
+//        val view = inflater.inflate(R.layout.favorite_list_item, parent, false)
+        val v = DataBindingUtil.inflate<FavoriteListItemBinding>(inflater,
+            R.layout.favorite_list_item, parent, false)
+        return FavoriteViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
-//        val kost = kostList[position]
-//        val kostId = kost.idKost
-//
-////        viewModel.fetch(kostId!!)
-//        with(holder.view) {
-////            textAlamatFavorite.text = kost.alamat
-////            textJenisKelaminFavorite.text = kost.jenisKelamin
-//
-//            textAlamatFavorite.text = viewModel.kostLiveData.value!!.alamat
-//            textJenisKelaminFavorite.text = viewModel.kostLiveData.value!!.jenisKelamin
-//            val formatter: NumberFormat = DecimalFormat("#,###")
-////            val myNumber = kost.harga
-////            val myNumber = viewModel.kostLiveData.value!!.harga
-//            val formattedNumber: String = formatter.format(myNumber)
-//            textHargaFavorite.setText(formattedNumber.toString())
-//            buttonDetailFavorite.setOnClickListener {
-//                val action = FavoriteFragmentDirections.actionFromFavoriteToDetailFragment(kost.idKost!!)
-//                Navigation.findNavController(it).navigate(action)
-//            }
-////            imageFavoriteKost.loadImage(kost.photoURL, progressPhotoFavorite)
-//            imageFavoriteKost.loadImage(viewModel.kostLiveData.value!!.photoURL, progressPhotoFavorite)
-//        }
+        with(holder.view) {
+            favorite = kostList[position]
+            listener = this@FavoriteListAdapter
+            listenerFavorite = this@FavoriteListAdapter
+        }
     }
 
     override fun getItemCount() = kostList.size
@@ -60,5 +48,14 @@ class FavoriteListAdapter (val kostList: ArrayList<Favorite>) : RecyclerView
         kostList.clear()
         kostList.addAll(newKostList)
         notifyDataSetChanged()
+    }
+
+    override fun onButtonDetailFavoriteListener(v: View) {
+        val action = FavoriteFragmentDirections.actionFromFavoriteToDetailFragment(v.tag.toString().toInt())
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onButtonFavoriteListener(v: View) {
+        TODO("Not yet implemented")
     }
 }

@@ -43,7 +43,7 @@ class BookingListViewModel(application: Application
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllBooking()
-//                    db.kostdao().insertAllBooking(result)
+                    db.kostdao().insertAllBooking(result)
                     kostLiveData.value = db.kostdao().selectAllBooking()
                 }
 
@@ -78,7 +78,7 @@ class BookingListViewModel(application: Application
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllBooking()
-//                    db.kostdao().insertAllBooking(result)
+                    db.kostdao().insertAllBooking(result)
                     kostLiveData.value = db.kostdao().selectAllBooking()
                 }
 

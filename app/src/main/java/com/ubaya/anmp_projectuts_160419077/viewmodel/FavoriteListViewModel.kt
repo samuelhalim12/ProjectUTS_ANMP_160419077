@@ -45,7 +45,7 @@ class FavoriteListViewModel(application: Application): AndroidViewModel(applicat
                         KostDatabase::class.java, "kostdb").build()
 //                    db.kostdao().deleteBooking(result)
 //                    db.kostdao().deleteAllFavorite()
-//                    db.kostdao().insertAllFavorite(result)
+                    db.kostdao().insertAllFavorite(result)
                     kostLiveData.value = db.kostdao().selectFavorite(username)
                 }
                 loadingLiveData.value = false

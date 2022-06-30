@@ -77,17 +77,16 @@ data class Ulasan (
 }
 @Entity(tableName = "favorite")
 data class Favorite (
+    @ColumnInfo(name="alamat")
+    var alamat: String?,
+    @ColumnInfo(name="harga")
+    var harga: Int?,
     @ColumnInfo(name="username")
     var username:String?,
+    @ColumnInfo(name="photoURL")
+    var photoURL: String?,
     @ColumnInfo(name="idKost")
-    var idKost:Int?,
-//    var alamat: String?,
-//    var kamarTersedia: Int?,
-//    var deskripsi: String?,
-//    var harga: Int?,
-//    var jenisKelamin: String?,
-//    var phone: String?,
-//    var photoURL: String?
+    var idKost:Int?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0

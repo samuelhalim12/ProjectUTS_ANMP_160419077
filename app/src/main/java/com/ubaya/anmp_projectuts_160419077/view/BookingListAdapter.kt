@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ubaya.anmp_projectuts_160419077.R
@@ -11,6 +12,7 @@ import com.ubaya.anmp_projectuts_160419077.databinding.KostBookingItemBinding
 import com.ubaya.anmp_projectuts_160419077.databinding.KostListItemBinding
 import com.ubaya.anmp_projectuts_160419077.model.Booking
 import com.ubaya.anmp_projectuts_160419077.util.loadImage
+import com.ubaya.anmp_projectuts_160419077.viewmodel.FavoriteListViewModel
 import kotlinx.android.synthetic.main.kost_booking_item.view.*
 import java.text.DecimalFormat
 import java.text.NumberFormat

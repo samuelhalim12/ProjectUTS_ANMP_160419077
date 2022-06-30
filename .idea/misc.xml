@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Folder Rian/Editing/ProjectUTS_ANMP_160419077/app/src/main/res/layout/favorite_list_item.xml" value="0.33" />
+        <entry key="..\:/Folder Rian/Editing/ProjectUTS_ANMP_160419077/app/src/main/res/layout/fragment_favorite.xml" value="0.16621376811594202" />
+        <entry key="..\:/Folder Rian/Editing/ProjectUTS_ANMP_160419077/app/src/main/res/layout/fragment_ulasan.xml" value="0.16621376811594202" />
+        <entry key="..\:/Folder Rian/Editing/ProjectUTS_ANMP_160419077/app/src/main/res/layout/kost_list_item.xml" value="0.16621376811594202" />
+        <entry key="..\:/Folder Rian/Editing/ProjectUTS_ANMP_160419077/app/src/main/res/layout/my_kost_list_item.xml" value="0.33" />
+        <entry key="..\:/Folder Rian/Editing/ProjectUTS_ANMP_160419077/app/src/main/res/layout/ulasan_list_item.xml" value="0.33" />
         <entry key="..\:/Users/Christianto Halim/Documents/Samuel/Kuliah/SEMESTER 6/ANMP/ANMP_ProjectUTS_160419077/app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.1065" />
         <entry key="..\:/Users/Christianto Halim/Documents/Samuel/Kuliah/SEMESTER 6/ANMP/ANMP_ProjectUTS_160419077/app/src/main/res/drawable/ic_baseline_fact_check_24.xml" value="0.1" />
         <entry key="..\:/Users/Christianto Halim/Documents/Samuel/Kuliah/SEMESTER 6/ANMP/ANMP_ProjectUTS_160419077/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.114" />

@@ -1,6 +1,7 @@
 package com.ubaya.anmp_projectuts_160419077.view
 
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.ubaya.anmp_projectuts_160419077.model.Booking
 import com.ubaya.anmp_projectuts_160419077.model.Kost
 
@@ -24,6 +25,12 @@ interface ButtonDetailListener {
     fun onButtonDetailListener(v: View)
 }
 
+interface ButtonDetailFavoriteListener {
+    fun onButtonDetailFavoriteListener(v: View)
+}
+interface ButtonFavoriteListener {
+    fun onButtonFavoriteListener(v: View)
+}
 interface ButtonAddFavoriteListener {
     fun onButtonAddFavoriteListener(v: View)
 }

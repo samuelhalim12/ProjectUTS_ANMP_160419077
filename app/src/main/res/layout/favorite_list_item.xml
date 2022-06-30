@@ -1,108 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
+        <variable
+            name="favorite"
+            type="com.ubaya.anmp_projectuts_160419077.model.Favorite" />
+        <variable
+            name="listener"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonDetailFavoriteListener" />
+        <variable
+            name="listenerFavorite"
+            type="com.ubaya.anmp_projectuts_160419077.view.ButtonFavoriteListener" />
+    </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageFavoriteKost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textAlamatFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Alamat"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageFavoriteKost"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Harga : Rp. "
-                app:layout_constraintStart_toStartOf="@+id/textAlamatFavorite"
-                app:layout_constraintTop_toBottomOf="@+id/textAlamatFavorite" />
+                <ImageView
+                    android:id="@+id/imageFavoriteKost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:imageUrl="@{favorite.photoURL}"
+                    android:progressBar="@{progressPhotoFavorite}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ProgressBar
-                android:id="@+id/progressPhotoFavorite"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imageFavoriteKost"
-                app:layout_constraintEnd_toEndOf="@+id/imageFavoriteKost"
-                app:layout_constraintStart_toStartOf="@+id/imageFavoriteKost"
-                app:layout_constraintTop_toTopOf="@+id/imageFavoriteKost" />
+                <TextView
+                    android:id="@+id/textAlamatFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@={favorite.alamat}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageFavoriteKost"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jenis Kelamin : "
-                app:layout_constraintStart_toStartOf="@+id/textView23"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga : Rp. "
+                    app:layout_constraintStart_toStartOf="@+id/textAlamatFavorite"
+                    app:layout_constraintTop_toBottomOf="@+id/textAlamatFavorite" />
 
-            <TextView
-                android:id="@+id/textHargaFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Harga"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                app:layout_constraintStart_toEndOf="@+id/textView23" />
+                <ProgressBar
+                    android:id="@+id/progressPhotoFavorite"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageFavoriteKost"
+                    app:layout_constraintEnd_toEndOf="@+id/imageFavoriteKost"
+                    app:layout_constraintStart_toStartOf="@+id/imageFavoriteKost"
+                    app:layout_constraintTop_toTopOf="@+id/imageFavoriteKost" />
 
-            <TextView
-                android:id="@+id/textJenisKelaminFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Putra"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView24"
-                app:layout_constraintStart_toEndOf="@+id/textView24" />
+                <TextView
+                    android:id="@+id/textHargaFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@={``+favorite.harga}"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView23"
+                    app:layout_constraintStart_toEndOf="@+id/textView23" />
 
-            <Button
-                android:id="@+id/buttonDetailFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Detail"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                <Button
+                    android:id="@+id/buttonDetailFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{listener::onButtonDetailFavoriteListener}"
+                    android:tag="@{favorite.id}"
+                    android:text="Detail"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
-            <Button
-                android:id="@+id/buttonFavoriteFav"
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_baseline_favorite_24"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonDetailFavorite"
-                app:layout_constraintEnd_toStartOf="@+id/buttonDetailFavorite"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/buttonFavoriteFav"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{listenerFavorite::onButtonFavoriteListener}"
+                    android:tag="@{favorite.idKost}"
+                    app:icon="@drawable/ic_baseline_favorite_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonDetailFavorite"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonDetailFavorite"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
